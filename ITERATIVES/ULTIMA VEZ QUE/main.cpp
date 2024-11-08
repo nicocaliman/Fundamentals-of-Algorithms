@@ -8,6 +8,28 @@
 
 using namespace std;
 
+/*
+    COSTE:
+    Las 3 primeras instrucciones tienen coste constante O(1).
+
+    Las 2 comparaciones de la cabecera son de coste constante O(1).
+
+        Las instrucciones condicionales:
+
+            if(nacionalidad == v[i]) -> acceso + comparacion (coste constante O(1))
+                ultima = true;       -> asignacion (coste constante O(1))
+
+            else
+                ultimaVez++;         -> operacion aritmetica (coste constante O(1))
+
+            Las instrucciones condicionales tienen coste constante O(1).
+            
+        --i;    -> operacion aritmetica (coste constante O(1))
+
+    El bucle tiene coste constante O(1).
+    Se dan n vueltas, por tanto, el coste es O(n), siendo n el tamaño del vector
+*/
+
 // función que resuelve el problema
 int resolver(const vector<string> &v, const string &nacionalidad)
 {
