@@ -8,72 +8,65 @@
 
 using namespace std;
 
-/*
-    COSTE(resolver):
-
-    La primera instruccion tiene coste 2(acceso a v[] + asignacion) = coste constante O(1)
-
-    Las instrucciones de la cabecera del bucle:
-
-        - int i = 1 : asignacion (coste constante O(1))
-        - i < v.size(): comparacion (coste constante O(1)) -> se ejecuta v.size()-1 veces
-        - i++: operacion aritmetica (coste constante O(1))  -> se ejecuta v.size()-1 veces
-
-    Las instrucciones condicionales:
-
-        if(v[i] > maximo)  = acceso + comparacion (coste constante O(1))
-            maximo = v[i];  = acceso + asignacion (coste constante O(1))
-
-        else if(v[i] == maximo) = acceso + comparacion (coste constante O(1))
-            ++nr;               = operacion aritmetica (coste constante O(1))
-
-    Como el coste de una vuelta es constante O(1), el coste del bucle for es O(1)*O(n) = O(n)
-
-    siendo n = numero de puntuaciones que tiene el vector
-*/
-
-// función que devuelve la maxima puntuacion
-int resolver(const vector<int> &v, int &nr)
+// función que resuelve el problema
+int resolver(const vector<string> &v, const string &nacionalidad)
 {
-    int maximo = v[0];  //cogemos el primer valor del vector como maximo
+    int ultimaVez = 1;  //suponemos que la ultima carrera se realizop hace 1 anno
 
-    //recorrer puntuaciones desde el 2o elemento del vector
-    for (int i = 1; i < v.size(); i++)
+    int i = v.size() - 1;
+    bool ultima = false;
+
+    //recorrer vector desde el final
+    while (i >= 0 && !ultima)
     {
-        if (v[i] > maximo)  //si hemos encontrado un valor mayor que el que teniamos como maximo  
-            maximo = v[i];         //actualizar maximo
+        if (nacionalidad == v[i])   //si es la nacionalidad que estamos buscando 
+            ultima = true;  //hemos dejado de buscar 
+        
+        else        //sino
+            ultimaVez++;    //los annos aumentan        
 
-        else if (v[i] == maximo)    //si hemos encontrado un valor identico al maximo
-            ++nr;                  //actualizar contador de repetidos
+        --i;
+    } 
+
+    if (!ultima)    //si no ha ganado en los ultimos annos 
+    {
+        ultimaVez = 0;  //flag 
     }
 
-    return maximo;  //devolver maximo
+    return ultimaVez;
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
-void resuelveCaso()
+bool resuelveCaso()
 {
     // leer los datos de la entrada
-    int puntuacion;
-    
-    cin >> puntuacion;
+    int numAnnos;
+    string nacionalidad;
 
-    vector<int> v;  //vector sin tamaño
+    cin >> numAnnos >> nacionalidad;    //leer el numero de annos y la nacionalidad que estamos buscando
 
-    //mientras no sea el fin de caso(0)
-    while (puntuacion != 0)
+    if (numAnnos == 0)
+        return false;
+
+    vector<string> ganadores(numAnnos); //vector que almacena los ganadores en los ultimos <numAnnos> annos
+
+    for (int i = 0; i < ganadores.size(); i++)
     {
-        v.push_back(puntuacion);    //agregar al vector la puntuacion
-        cin >> puntuacion;
+        cin >> ganadores[i];    //cargar vector con ganadores
     }
 
-    int numRepetido = 1;    //como en resolver consideramos maximo al primer elemento, consideramos que hemos visto ese elemento 1 vez
+    int sol = resolver(ganadores, nacionalidad);    //devuelve el ultimo anno en el que gano la carrera
 
-    int sol = resolver(v, numRepetido); //almacenar en sol la puntuacion maxima
-        
+
     // escribir sol
-    cout << sol << " " << numRepetido << "\n";  // <puntuacion maxima> <numero de veces repetido>
+    if (sol == 0)
+        cout << "NUNCA" << "\n";
+
+    else
+        cout << sol << "\n";
+
+    return true;
 }
 
 int main() {
@@ -85,10 +78,8 @@ int main() {
 #endif 
 
 
-    int numCasos;
-    std::cin >> numCasos;
-    for (int i = 0; i < numCasos; ++i)
-        resuelveCaso();
+    while (resuelveCaso())
+        ;
 
 
     // Para restablecer entrada. Comentar para acepta el reto
