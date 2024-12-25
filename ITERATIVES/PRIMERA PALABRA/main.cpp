@@ -15,9 +15,9 @@ using namespace std;
 
     En el bucle for():
         
-        se ejecuta v.size()-1 veces.
+        se ejecuta v.size() veces.
 
-    Del if(), tenemos la condicion (coste constante O(1)) + maximo entre las intrucciones condicionales (coste constante O(1)), por tanto, coste O(1) total.
+    Del if(), tenemos la condicion (coste (2) constante O(1)) + maximo entre las intrucciones condicionales (coste (2) constante O(1)), por tanto, coste O(1) total.(el if se ejecuta v.size()-1 veces)
 
     En consecuencia, cada vuelta tiene coste constante O(1).
 
