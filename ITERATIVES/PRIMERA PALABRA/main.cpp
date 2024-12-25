@@ -21,7 +21,7 @@ using namespace std;
 
     En consecuencia, cada vuelta tiene coste constante O(1).
 
-    En resumen, como el coste de cada vuelta es constante, lo mulitplicamos por el numero de vueltas que da el bucle(n-1) -> O(n-1) c O(n)
+    En resumen, como el coste de cada vuelta es constante, lo mulitplicamos por el numero de vueltas que da el bucle(n) -> O(n) 
 */
 
 // función que resuelve el problema
