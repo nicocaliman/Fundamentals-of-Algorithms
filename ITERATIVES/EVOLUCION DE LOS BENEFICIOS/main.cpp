@@ -20,6 +20,12 @@ using namespace std;
     Por tanto. como todas las vueltas tienen el mismo coste, multiplicamos el coste de cada vuelta por el numero de vueltas: v.size()-1 vueltas = n-1 * O(1)
 
     El coste del algoritmo es lineal O(n).
+
+    P ≡ {1 ≤ v.size ∧ ∀ i : 0 ≤ i < v.size : −2^31 + 1 ≤ v[i] ≤ 2^31 − 1 ∧ 1700 ≤ ini ≤ 4000}
+beneficios (vector<integer> v, integer ini) dev vector<integer> sol
+Q ≡ {∀i : 0 ≤ i < v.size ∧ i + ini ∈ sol : (∀j : 0 ≤ j < i : v[j] < v[i] ∧
+∀i : 0 ≤ i < v.size ∧ i + ini ̸∈ sol : (∃j : 0 ≤ j < i : v[j] ≥ v[i]}
+
 */
 // función que resuelve el problema
 vector<int> resolver(const vector<int>& v, int primero) 
