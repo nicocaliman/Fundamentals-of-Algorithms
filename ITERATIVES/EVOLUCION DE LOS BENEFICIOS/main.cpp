@@ -21,23 +21,20 @@ using namespace std;
 
     El coste del algoritmo es lineal O(n).
 */
-
 // función que resuelve el problema
-vector<int> resolver(const vector<int> &v, int y1) 
+vector<int> resolver(const vector<int>& v, int primero) 
 {
-    vector<int> beneficios; //declarar vector donde van a ir los años en los que se obtuvo beneficio
-    int profit = v[0];   
-    int aux = y1+1; //no consideramos el primer año, lo pone el enunciado
+    vector<int> beneficios;
+    int aux = 1;
+    int profit = v[0];
 
-    //recorrer desde 0 hasta n-1, penultimo elemento del vector
-    for (int i = 0; i < v.size()-1; i++)
+    for (int i = 1; i < v.size(); i++)
     {
-        if (profit < v[i+1])    //si el beneficio del siguiente año es mayor que 
+        if (v[i] > profit)
         {
-            aux += i;   
-            beneficios.push_back(aux);  //meter año de beneficio en el vector
-            aux = y1 + 1;   //resetear al primer año
-            profit = v[i + 1];  //actualizar beneficio
+            aux = i;
+            beneficios.push_back(primero+aux);
+            profit = v[i];
         }
     }
 
