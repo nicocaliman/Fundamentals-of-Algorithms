@@ -1,0 +1,3 @@
+﻿  iterativo.cpp
+D:\FAL\ITERATIVOS\Project1\Project1\iterativo.cpp(7,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Project1.vcxproj -> D:\FAL\ITERATIVOS\Project1\x64\Debug\Project1.exe
