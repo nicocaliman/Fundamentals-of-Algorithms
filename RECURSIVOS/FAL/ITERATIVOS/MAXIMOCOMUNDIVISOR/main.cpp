@@ -1,5 +1,5 @@
-﻿// Nombre del alumno .....
-// Usuario del Juez ......
+﻿// Nicolae Gabriel Caliman
+// FAL-A73
 
 
 #include <iostream>
