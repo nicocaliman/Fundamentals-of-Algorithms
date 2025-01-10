@@ -1,4 +1,4 @@
-﻿// Nicolae Gabriel Caliman  
+// Nicolae Gabriel Caliman  
 // FAL A-73
 
 #include <iostream>
@@ -17,7 +17,7 @@ const int CENTINELA = 0;
 
     siendo maximo(v) = max i: 0 <= i < v.size() : v[i]
 
-    funcion de coste: t = v.size() - i 
+    funcion de coste: t = v.size() - i
 
     Invariante: I = {maximo = max K: 0 <= k < i: v[k]}
 
@@ -26,7 +26,7 @@ const int CENTINELA = 0;
         La primera instruccion tiene coste constante O(1)
         El bucle se ejcuta v.size()-1 veces.
         El coste de la instruccion condicional es 2 + max(1,2) = 4 c O(1)
-        
+
         Por tanto, el coste del bucle for() es 4*v.size() c O(v.size())
 
         La instruccion return tiene coste constante c O(1).
@@ -35,9 +35,10 @@ const int CENTINELA = 0;
 */
 
 // función que resuelve el problema
-int resolver(const vector<int>& v, int& numApariciones) 
+pair<int,int> resolver(const vector<int>& v)
 {
     int maximo = v[0];
+    int numApariciones = 1;
 
     for (int i = 1; i < v.size(); i++)
     {
@@ -52,8 +53,8 @@ int resolver(const vector<int>& v, int& numApariciones)
             ++numApariciones;
         }
     }
-    
-    return maximo;
+
+    return {maximo, numApariciones};    //devolver la maxima puntuacion + el numero de veces que se repite esta
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
@@ -63,7 +64,7 @@ void resuelveCaso() {
     int puntuacion;
 
     cin >> puntuacion;  //leer puntuacion 
-        
+
     vector<int> puntuaciones;
 
     while (puntuacion != CENTINELA) //mientras no se llegue al final del caso (0)
@@ -74,9 +75,9 @@ void resuelveCaso() {
 
     int numApariciones = 1;
 
-    int maximo = resolver(puntuaciones, numApariciones);
+    pair<int,int> sol = resolver(puntuaciones);
 
-    cout << maximo << " " << numApariciones << "\n";
+    cout << sol.first << " " << sol.second << "\n";
 }
 
 int main() {
