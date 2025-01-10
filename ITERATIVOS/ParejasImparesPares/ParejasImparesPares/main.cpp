@@ -1,5 +1,14 @@
 // Nicolae Gabriel Caliman
 
+/*
+    P:{pt i, j: 0 <= i < j < v.size(): v[i] != v[j]}
+        fun resolver(vector<integer> v) dev numParejas
+    Q:{numParejas = #k,l: 0<=k<l<v.size(): v[k] == impar(v,k) ^ v[l] == par(v,k)}
+
+    siendo impar(v,k) = v[k] % 2 == 1    
+    siendo par(v,l) = v[l] % 2 == 0
+*/  
+
 #include <iostream>
 #include <iomanip>
 #include <fstream>
