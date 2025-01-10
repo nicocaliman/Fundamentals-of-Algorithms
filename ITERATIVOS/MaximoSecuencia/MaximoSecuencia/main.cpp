@@ -11,9 +11,9 @@ using namespace std;
 const int CENTINELA = 0;
 
 /*
-    P = {numPuntuaciones > 0 ^ pt i: 0 <= i < v.size(): v[i] != 0}
-        fun resolver(vector<integer> v, integer &numApariciones) dev integer maximo
-    Q = {maximo = max k: 0 <= k < v.size(): v[k] ^ numApariciones = # k: 0 <= k < v.size(): v[k] == maximo(v)}
+    P = {v.size() > 0 ^ pt i: 0 <= i < v.size(): v[i] != 0}
+        fun resolver(vector<integer> v) dev {integer maximo, integer numApariciones}
+    Q = {maximo = maximo(v) ^ numApariciones = # k: 0 <= k < v.size(): v[k] == maximo(v)}
 
     siendo maximo(v) = max i: 0 <= i < v.size() : v[i]
 
