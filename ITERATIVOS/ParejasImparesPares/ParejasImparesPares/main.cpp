@@ -1,4 +1,4 @@
-﻿// Nicolae Gabriel Caliman
+// Nicolae Gabriel Caliman
 
 #include <iostream>
 #include <iomanip>
@@ -7,27 +7,26 @@
 
 using namespace std;
 
-
 // función que resuelve el problema
 int resolver(const vector<int>& v)
 {
-    int parejas = 0;
-    int par = 0;
+    int numParejas = 0;
+    int numPares = 0;
 
-    for (int i = v.size()-1; i >= 0; --i)
+    for (int i = v.size() - 1; i > 0; --i)
     {
         if (v[i] % 2 == 0)
         {
-            par++;
+            numPares++;
         }
 
-        else
+        if(v[i-1] % 2 != 0)
         {
-            parejas += par;
+            numParejas += numPares;
         }
     }
 
-    return parejas;
+    return numParejas;
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
